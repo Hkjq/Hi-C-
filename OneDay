@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int one, two, three,max;
+	cout << "请输入第一只小猪的体重" << endl;
+	cin >> one;
+	cout << "输入第二只" << endl;
+	cin >> two;
+	cout << "san" << endl;
+	cin >> three;
+	if (one >= two) {
+		max = one;
+	}
+	else{
+		max = two;
+	}
+
+	if (max >= three) {
+		cout << "体重最大的是" << max << endl;
+	}
+	else
+	{
+		cout << "体重最重的是" << three << endl;
+	}
+
+	system("pause");
+	return 0;
+}
