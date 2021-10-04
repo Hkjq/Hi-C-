@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+	//1.定义一个指针
+	int a = 10;
+	int* p;
+
+	//2.使用指针
+	p = &a;
+
+	cout << "a的地址\t" << &a<<endl;
+	cout << "p的值\t" << p << endl;
+
+	system("pause");
+	return 0;
+}
