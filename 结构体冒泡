@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+//创建英雄的结构体
+struct hero {
+	string Name;
+	int age;
+	string sex;
+};
+
+//存放结构体的数据
+
+
+void change(struct hero hArray[],int len) {
+	for (int i = 0; i < len-1; i++)
+	{
+		for (int j = 0; j < len-i-1; j++)
+		{
+			if (hArray[j].age > hArray[j + 1].age) {
+				//交换数据
+				struct hero temp;
+				temp = hArray[j];
+				hArray[j] = hArray[j + 1];
+				hArray[j + 1] = temp;
+			}
+		}
+	}
+}
+
+
+
+void printf(struct hero hArray[], int len) {
+	for (int i = 0; i < len; i++)
+	{
+		cout << "姓名 " << hArray[i].Name<<endl;
+		cout << "年龄 " << hArray[i].age << endl;
+		cout << "性别 " << hArray[i].sex << endl;
+	}
+}
+
+
+int main() {
+	struct hero hArray[5] = {
+		{"刘备",23,"男"},
+		{"关羽",22,"男"},
+		{"张飞",20,"男"},
+		{"孙权",21,"男"},
+		{"貂蝉",18,"女"}
+	
+	};
+
+	int len = sizeof(hArray) / sizeof(hArray[0]);
+	change(hArray,len);
+	printf(hArray, len);
+
+	system("pause");
+	return 0;
+}
