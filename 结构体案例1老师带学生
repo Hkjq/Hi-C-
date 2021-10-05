@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+#include <string>
+//3.定义学生数组
+struct Student {
+	string sName;
+	int score;
+};
+
+
+//1.定义老师的结构体
+struct Teacher {
+	string tName;
+	//2.包含学生数组
+	struct Student sArray[5];
+};
+
+	//4.给数组中存入信息
+void inData(struct Teacher tArray[],int len) {
+	string n = "ABCDE";
+	//0-100的随机数
+	
+	//随机种子
+	srand((unsigned int)time(NULL));
+	//老师数据
+	for (int i = 0; i < len; i++)
+	{
+		tArray[i].tName = "teacher_";
+		tArray[i].tName += n[i];
+
+	//学生数据
+		for (int j = 0; j < 5; j++)
+		{
+			//名字
+			tArray[i].sArray[j].sName = "student_";
+			tArray[i].sArray[j].sName += n[i];
+
+			//分数
+			int num = rand() % 101;
+			tArray[i].sArray[j].score = num;
+		}
+	}
+}
+
+//6.打印数据
+void printf(struct Teacher tArray[],int len) {
+	for (int i = 0; i < len; i++)
+	{
+		cout << "老师的名字是:" << tArray[i].tName << endl;
+		for (int j = 0; j < 5; j++)
+		{
+			cout << "他的学生是 " << tArray[i].sArray[j].sName <<
+				"成绩为 " << tArray[i].sArray[j].score << endl;
+		}
+		
+	}
+}
+
+int main() {
+
+	//5.创建老师的数组
+	struct Teacher tArray[3];
+	int len = sizeof(tArray) / sizeof(tArray[0]);
+	
+	inData(tArray,len);
+
+	printf(tArray,len);
+
+	system("pause");
+	return 0;
+}
