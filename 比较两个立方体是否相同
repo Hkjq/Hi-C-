@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+
+class Cube {
+
+private:
+	int m_L; //长
+	int m_W; //宽
+	int m_H; //高
+
+public:
+	//设置长
+	void setL(int l) {
+		m_L = l;
+	}
+	//获取长
+	int getL() {
+		return m_L;
+	}
+	
+	//设置宽
+	void setW(int w) {
+		m_W = w;
+	}
+	//获取宽
+	int getW() {
+		return m_W;
+	}
+	//设置高
+	void setH(int h) {
+	m_H = h;
+}
+	//获取高
+	int getH() {
+		return m_H;
+	}
+	//面积
+	int S() {
+		int s = 2 * m_L * m_W + 2 * m_W * m_H + 2 * m_H * m_L;
+		return s;
+	}
+	//体积
+	int V() {
+		int v = m_L * m_W * m_H;
+		return v;
+	}
+
+	//局部变量比较
+	bool isSameP(Cube &a) {
+		if (m_H == a.getH() && m_L == a.getL() && m_W == a.getW()) {
+			cout << "两个立方体相同" << endl;
+			return true;
+		}
+		cout << "两个立方体不相同" << endl;
+		return false;
+	}
+
+
+};
+
+//全局变量比较立方体
+bool isSame(Cube &a,Cube &b) {
+	if (a.getH() == b.getH() && a.getL() == b.getL() && a.getW() == b.getW()) {
+		cout << "两个立方体相同" << endl;
+		return true;
+	}
+	cout << "两个立方体不相同" << endl;
+	return false;
+}
+
+int main() {
+
+	Cube c1;
+	c1.setL(10);
+	c1.setW(10);
+	c1.setH(10);
+	cout << "c1面积为" << c1.S()<<endl;
+	cout << "c1体积为" << c1.V() << endl;
+
+
+	Cube c2;
+	c2.setL(10);
+	c2.setW(10);
+	c2.setH(10);
+	cout << "c2面积为" << c2.S() << endl;
+	cout << "c2体积为" << c2.V() << endl;
+
+	//isSame(c1,c2);
+	c1.isSameP(c2);
+
+	system("pause");
+	return 0;
+}
