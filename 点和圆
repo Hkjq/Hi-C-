@@ -1,0 +1,100 @@
+#include <iostream>
+using namespace std;
+
+//点类
+class Point {
+private:
+	int p_x;//x
+	int p_y;//y
+
+public:
+	//设置点X
+	void setPointX(int x){
+		p_x = x;
+	}
+
+	//获取点X
+	int getPointX() {
+		return p_x;
+	}
+
+	//设置点Y
+	void setPointY(int y) {
+		p_y = y;
+	}
+	//获取点Y
+	int getPointY() {
+		return p_y;
+	}
+};
+
+
+//圆类
+class Circle {
+private:
+	//半径
+	int c_r;
+	//圆心
+	Point p;
+
+public:
+	//设置半径
+	void setR(int r) {
+		c_r = r;
+	}
+	//获取半径
+	int getR() {
+		return c_r;
+	}
+	//设置圆心
+	void setPo(Point po) {
+		p = po;
+	}
+	Point getPo() {
+		return p;
+	}
+
+};
+
+void isInCircle(Point &p,Circle &c) {
+	int F =
+		(p.getPointX() - c.getPo().getPointX()) * (p.getPointX() - c.getPo().getPointX()) +
+		(p.getPointY() - c.getPo().getPointY()) * (p.getPointY() - c.getPo().getPointY());
+	if (F == c.getR() * c.getR()) {
+		cout << "在圆上" << endl;
+		return;
+	}else if (F > c.getR() * c.getR()) {
+		cout << "在圆外" << endl;
+		return;
+	}
+	else {
+		cout << "在圆内" << endl;
+		return;
+	}
+}
+
+
+int main() {
+	//造圆
+	Point center;
+	Circle c;
+
+	//设置圆心点
+	center.setPointX(10);
+	center.setPointY(0);
+	//设置圆的半径
+	c.setR(10);
+	//设置圆的圆心
+	c.setPo(center);
+
+	//造点
+	Point p;
+	p.setPointX(10);
+	p.setPointY(10);
+
+	isInCircle(p,c);
+
+
+	system("pause");
+	return 0;
+}
