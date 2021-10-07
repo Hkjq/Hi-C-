@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+//封装学生类
+class student {
+public:
+	//成员变量
+	//属性
+	string s_Name;
+	int s_Id;
+
+	//行为
+	//输入名字
+	void setName(string name) {
+		s_Name = name;
+	}
+
+	// 输入id
+	void setId(int id) {
+		s_Id = id;
+	}
+	//打印名字和id
+	void print() {
+		cout << "名字是 " << s_Name << " id为 " << s_Id << endl;
+	}
+};
+
+
+int main() {
+
+	student s1;
+	s1.setName("a");
+	s1.setId(123);
+	s1.print();
+
+	system("pause");
+	return 0;
+}
