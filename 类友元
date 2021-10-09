@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+#include<string>
+//类做友元
+class room {
+public:
+	friend class py;
+
+	room();
+	string set;
+private:
+	string bed;
+};
+
+room::room() {
+	set = "set";
+	bed = "bed";
+}
+
+class py {
+public:
+	py();
+	void vist();
+	room* r;
+};
+
+py::py() {
+	r = new room;
+}
+
+void py::vist() {
+	cout << "参观" << r->set << endl;
+	cout << "参观" << r->bed<< endl;
+}
+
+void test() {
+	py r;
+	r.vist();
+}
+int main() {
+	test();
+
+	system("pause");
+	return 0;
+}
