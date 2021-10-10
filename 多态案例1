@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+class AbstractCalculator {
+public:
+	int num1;
+	int num2;
+
+	virtual int getResult() {
+		return 0;
+	}
+};
+
+class AddCalculator :public AbstractCalculator {
+public:
+	int getResult() {
+		return num1 + num2;
+	}
+};
+
+void test() {
+	//父类指针指向子类 多肽
+	//加法运算
+	AbstractCalculator* abc = new AddCalculator;
+	abc->num1 = 100;
+	abc->num2 = 100;
+	cout << abc->getResult() << endl;
+}
+
+int main() {
+	test();
+	system("pause");
+	return 0;
+}
