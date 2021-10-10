@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+#include <string>
+
+class drink {
+public:
+	//纯虚函数
+	virtual void shui() = 0;
+	virtual void chong() = 0;
+	virtual void dao() = 0;
+	virtual void jia() = 0;
+};
+
+class coffee :public drink {
+public:
+	void shui() {
+		cout << "煮水" << endl;
+	}
+	void chong() {
+		cout << "冲泡咖啡" << endl;
+	}
+	void dao() {
+		cout << "倒水" << endl;
+	}
+	void jia() {
+		cout << "加糖" << endl;
+	}
+};
+
+
+class tea :public drink {
+public:
+	void shui() {
+		cout << "煮水" << endl;
+	}
+	void chong() {
+		cout << "泡茶" << endl;
+	}
+	void dao() {
+		cout << "倒水" << endl;
+	}
+	void jia() {
+		cout << "加柠檬" << endl;
+	}
+};
+
+void make(drink * d) {
+	d->shui();
+	d->chong();
+	d->dao();
+	d->jia();
+}
+
+int main() {
+	make(new coffee);
+	make(new tea);
+	system("pause");
+}
