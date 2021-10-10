@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+
+class Animal {
+public:
+	//虚函数 晚绑定
+	virtual void speak() {
+		cout << "动物叫" << endl;
+	}
+};
+
+class cat :public Animal {
+public:
+	void speak() {
+		cout << "猫叫" << endl;
+	}
+};
+
+class dog :public Animal {
+public:
+	void speak() {
+		cout << "狗叫" << endl;
+	}
+};
+
+void speakAnimal(Animal &animal) {
+	animal.speak();
+}
+
+void test() {
+	cat c;
+	speakAnimal(c);
+
+	dog d;
+	speakAnimal(d);
+}
+
+int main() {
+	test();
+
+	system("pause");
+}
