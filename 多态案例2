@@ -49,6 +49,7 @@ void make(drink * d) {
 	d->chong();
 	d->dao();
 	d->jia();
+	delete d;
 }
 
 int main() {
