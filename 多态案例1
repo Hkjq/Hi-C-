@@ -25,6 +25,8 @@ void test() {
 	abc->num1 = 100;
 	abc->num2 = 100;
 	cout << abc->getResult() << endl;
+	//释放
+	delete abc;
 }
 
 int main() {
