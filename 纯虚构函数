@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+#include <string>
+
+
+class Animal {
+public:
+	virtual void speak() = 0;
+
+	Animal() {
+		cout << "AA构造函数调用" << endl;
+	}
+
+	virtual ~Animal() = 0;
+		
+};
+
+Animal::~Animal() {
+	cout << "AA的纯析构函数" << endl;
+}
+	
+class Cat :public Animal {
+public:
+	Cat(string name) {
+	c_name	= new string(name);
+	cout << "猫的构造函数" << endl;
+	}
+
+	void speak() {
+		cout << *c_name<< "猫叫" << endl;
+	}
+	~Cat() {
+		if (c_name != NULL) {
+			delete c_name;
+			c_name = NULL;
+			cout << "猫的析构函数" << endl;
+		}
+	}
+	string *c_name;
+};
+
+void test() {
+	Animal *a = new Cat("Tom");
+	a->speak();
+	delete a;
+}
+
+int main() {
+	test();
+
+	system("pause");
+	return 0;
+}
