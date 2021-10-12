@@ -1,0 +1,124 @@
+#include <iostream>
+using namespace std;
+#include<string>
+
+//cpu父类
+class CPU {
+public:
+	//多态
+	//虚函数
+	virtual void calculate() = 0;
+};
+//显卡父类
+class VideoCard {
+public:
+	virtual void display() = 0;
+};
+//内存条父类
+class Memory {
+public:
+	virtual void input() = 0;
+};
+
+class Computer {
+public:
+	//构造函数
+	Computer(CPU *cpu, VideoCard*vc, Memory*in) {
+		m_cpu = cpu;
+		m_vc = vc;
+		m_in = in;
+	}
+
+	void work() {
+		m_cpu->calculate();
+		m_vc->display();
+		m_in->input();
+	}
+
+	~Computer(){
+		if (m_cpu != NULL) {
+			delete m_cpu;
+			m_cpu = NULL;
+		}
+		if (m_vc != NULL) {
+			delete m_vc;
+			m_vc = NULL;
+		}
+		if (m_in != NULL) {
+			delete m_in;
+			m_in = NULL;
+		}
+	}
+
+private:
+	CPU*m_cpu;
+	VideoCard*m_vc;
+	Memory*m_in;
+};
+
+class InterCPU:public CPU {
+public:
+	void calculate(){
+		cout << "因特尔的CPU在运行" << endl;
+	}
+};
+class InterViedoCard :public VideoCard {
+public:
+	void display() {
+		cout << "因特尔的显卡在运行" << endl;
+	}
+};
+class InterMemory :public Memory {
+public:
+	void input() {
+		cout << "因特尔的内存正在运行" << endl;
+	}
+};
+
+class LenCPU:public CPU{
+public:
+	void calculate() {
+		cout << "联想的CPU在运行" << endl;
+	}
+};
+class LenViedoCard :public VideoCard {
+public:
+	void display() {
+		cout << "联想的显卡在运行" << endl;
+	}
+};
+class LenMemory :public Memory {
+public:
+	void input() {
+		cout << "联想的内存正在运行" << endl;
+	}
+};
+
+void test01() {
+	//造零件
+	//因特尔
+	CPU *cpu1 = new InterCPU;
+	VideoCard* vc1 = new InterViedoCard;
+	Memory* mem1 = new InterMemory;
+
+	//第二台
+	CPU* cpu2 = new LenCPU;
+	VideoCard* vc2 = new LenViedoCard;
+	Memory* mem2 = new LenMemory;
+	
+	Computer*com1 = new Computer(cpu1, vc1, mem1);
+	com1->work();
+	delete com1;
+
+	Computer*com2 = new Computer(cpu2, vc2, mem2);
+	com2->work();
+	delete com2;
+}
+
+
+int main() {
+	test01();
+
+	system("pause");
+	return 0;
+}
