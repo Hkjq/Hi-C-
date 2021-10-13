@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+#include<fstream>
+
+int main() {
+	ofstream ofs;
+	ofs.open("test.txt",ios::out);
+	ofs << "姓名张三" << endl;
+	ofs << "姓名张si" << endl;
+	ofs << "姓名张物" << endl;
+	ofs.close();
+
+	system("pause");
+	return 0;
+}
