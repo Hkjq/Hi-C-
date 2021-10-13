@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+#include <fstream>
+
+int main() {
+	//1.创建流对象
+	ifstream ifs;
+
+	//2.打开文件
+	ifs.open("test.txt",ios::in);
+
+	//3.看看是否打开了文件
+	while (!ifs.is_open()) {
+		cout << "文件错误" << endl;
+		return 0;
+	}
+
+	//输出数据
+	char d[1024] = {0};
+	while (ifs >> d)
+	{
+		cout << d << endl;
+	}
+
+	system("pause");
+}
