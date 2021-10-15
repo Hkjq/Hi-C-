@@ -1,0 +1,11 @@
+class Solution {
+public:
+    /**
+     * @param target: A string
+     * @return: An integer
+     */
+    int stringToInteger(string &target) {
+        // write your code here
+        return(std::stoi(target));
+    }
+};
