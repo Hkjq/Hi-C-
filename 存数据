@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+#include <string>
+#include <vector>
+#include <map>
+
+class Worker {
+public:
+	string m_Name;
+	int m_Salary;
+};
+
+void creatWorker(vector<Worker>&v) {
+	string nameSeed = "ABCDEFGHIJ";
+	for (int i = 0; i < 10; i++)
+	{
+		Worker w;
+		w.m_Name = "员工";
+		w.m_Name += nameSeed[i];
+		w.m_Salary = rand()%10000+10000;
+
+		v.push_back(w);
+	}
+}
+
+void creatGroup(vector<Worker>& v, multimap <int, Worker> &m) {
+	for (vector<Worker>::iterator it = v.begin(); it != v.end();it++) {
+		int randId = rand() % 3;
+		m.insert(make_pair(randId,*it));
+	}
+}
+
+void showWorker(multimap <int, Worker>& m) {
+	cout << "策划部门:" << endl;
+	multimap<int, Worker>::iterator pos = m.find(0);
+	int num = m.count(0);
+	int cot = 0;
+	for (; pos != m.end()&&cot<num;pos++,cot++) {
+		cout << "姓名:" << (*pos).second.m_Name << "  工资:" << pos->second.m_Salary << endl;
+		}
+
+	cout << "美术部门:" << endl;
+	pos = m.find(1);
+	num = m.count(1);
+	cot = 0;
+		for (; pos != m.end() && cot < num; pos++, cot++) {
+			cout << "姓名:" << (*pos).second.m_Name << "  工资:" << pos->second.m_Salary << endl;
+		}
+
+	cout << "研发部门:" << endl;
+	pos = m.find(2);
+	num = m.count(2);
+	cot = 0;
+	for (; pos != m.end() && cot < num; pos++, cot++) {
+		cout << "姓名:" << (*pos).second.m_Name << "  工资:" << pos->second.m_Salary << endl;
+	}
+};
+
+int main() {
+	srand((unsigned int)time(NULL));
+	vector <Worker> v;
+	creatWorker(v);
+	multimap <int, Worker> m;
+	creatGroup(v,m);
+	//打印
+	showWorker(m);
+
+	system("pause");
+	return 0;
+}
